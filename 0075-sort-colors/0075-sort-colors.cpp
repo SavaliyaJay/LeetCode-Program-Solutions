@@ -10,11 +10,6 @@ public:
             }
             p--;
         }
-        for(int i =0;i<p;i++){
-            cout<<nums[i];
-            if(i!=p){
-                cout<<",";
-            }
-        }
+        
     }
 };
