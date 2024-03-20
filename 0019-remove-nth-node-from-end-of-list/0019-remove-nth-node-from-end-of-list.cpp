@@ -8,25 +8,37 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+int lengthOfLinkedList(ListNode *head){
+    ListNode *temp=head;
+    int length=0;
+    
+    while(temp!=NULL){
+        length++;
+        temp=temp->next;
+    }
+    
+    return length;
+}
 class Solution {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode* dummy = new ListNode(0);
-        dummy->next = head;
-        ListNode* first = dummy;
-        ListNode* second = dummy;
+    ListNode *removeNthFromEnd(ListNode *head,int n){
+        int length=lengthOfLinkedList(head);
+        n=length-n;
         
-        for (int i = 0; i <= n; i++) {
-            first = first->next;
-        }
-
-        while (first != nullptr) {
-            first = first->next;
-            second = second->next;
+        if(n==0){
+            return head->next;
         }
         
-        second->next = second->next->next;
+        ListNode *temp=head,*prevNode=NULL;
         
-        return dummy->next;
+        while(n){
+            prevNode=temp;
+            temp=temp->next;
+            n--;
+        }
+        
+        prevNode->next=temp->next;
+        return head;
     }
 };
