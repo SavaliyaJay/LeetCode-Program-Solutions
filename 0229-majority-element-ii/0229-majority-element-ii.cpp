@@ -2,9 +2,7 @@ class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
         int d = nums.size() / 3;
-        
-        cout<<d;
-        
+                
         map<int,int> m;
         
         for(auto n: nums){
